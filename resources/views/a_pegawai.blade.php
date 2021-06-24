@@ -4,7 +4,8 @@
 <div class="col text-right">
                     <a href="/pegawai/add" class="btn btn-sm btn-primary">Add Pegawai</a>
                 </div>
-    <table class="table table-bordered">
+    <div class="box-body" style="background-color: white;">
+    <table class="table table-bordered table-hover ">
     <thead>
         <tr>
             <th>No</th>
@@ -31,11 +32,17 @@
                       Masyarakat
                 @endif</td>
             <td>
-                <a href="/pegawai/detailpegawai/{{ $data->id }}" class="btn btn-sm btn-success">Detail</a>
+                <a href="/pegawai/admin/detailpegawai/{{ $data->id }}" class="btn btn-sm btn-success">Detail</a>
                 <a href="/pegawai/deletepegawai/{{ $data->id }}" class="btn btn-sm btn-danger">Delete</a>
             </td>
         </tr>
         @endforeach
     </tbody>
     </table>
+    </div>
+    {{-- Halaman : {{ $users->currentPage() }} <br/> --}}
+	{{-- Jumlah Data : {{ $users->total() }} <br/> --}}
+	{{-- Data Per Halaman : {{ $users->perPage() }} <br/>
+    {!! $users->links() !!} --}}
+
 @endsection

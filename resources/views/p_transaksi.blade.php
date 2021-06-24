@@ -1,12 +1,13 @@
 @extends('layout.v_templatet')
 @section('title','Transaksi')
 @section('content')
-                <div class="col text-right">
+                {{-- <div class="col text-right"> --}}
                   {{-- <a href="#!" class="btn btn-sm btn-primary">Tampilkan Semua</a> --}}
-                    <a href="/transaksi/add" class="btn btn-sm btn-primary">Add Transaksi</a>
+                    {{-- <a href="/transaksi/add" class="btn btn-sm btn-primary">Add Transaksi</a> --}}
 
-                </div>
-    <table class="table table-bordered">
+                {{-- </div> --}}
+    <div class="box-body" style="background-color: white;">
+    <table class="table table-bordered table-hover ">
     <thead>
         <tr>
             <th>No</th>
@@ -29,4 +30,5 @@
         @endforeach
     </tbody>
     </table>
+    </div>
 @endsection

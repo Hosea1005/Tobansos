@@ -12,6 +12,10 @@ class PegawaiModel extends Model
         return DB::table('users')->get();
     }
 
+    public function allDataAdmin(){
+        return DB::table('users')->get();
+    }
+
     public function detailData($id){
         return DB::table('users')->where('id', $id)->first();
     }

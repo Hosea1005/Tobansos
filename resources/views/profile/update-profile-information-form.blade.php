@@ -58,27 +58,6 @@
             <x-jet-input id="name" type="text" class="mt-1 block w-full" wire:model.defer="state.name" autocomplete="name" />
             <x-jet-input-error for="name" class="mt-2" />
         </div>
-        <!-- NIM -->
-        <div class="col-span-6 sm:col-span-4">
-            <x-jet-label for="nim" value="{{ __('NIM') }}" />
-            <x-jet-input id="nim" type="text" class="mt-1 block w-full" wire:model.defer="state.nim" autocomplete="nim" />
-            <x-jet-input-error for="nim" class="mt-2" />
-        </div>
-        
-        <!-- Program Study -->
-        <div class="col-span-6 sm:col-span-4">
-            <x-jet-label for="pstudy" value="{{ __('Program Study') }}" />
-            <x-jet-input id="pstudy" type="text" class="mt-1 block w-full" wire:model.defer="state.pstudy" autocomplete="pstudy" />
-            <x-jet-input-error for="pstudy" class="mt-2" />
-        </div>
-
-        <!-- Alamat -->
-        <div class="col-span-6 sm:col-span-4">
-            <x-jet-label for="alamat" value="{{ __('Alamat') }}" />
-            <x-jet-input id="alamat" type="text" class="mt-1 block w-full" wire:model.defer="state.alamat" autocomplete="alamat" />
-            <x-jet-input-error for="alamat" class="mt-2" />
-        </div>
-
 
         <!-- Email -->
         <div class="col-span-6 sm:col-span-4">

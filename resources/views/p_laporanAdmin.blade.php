@@ -1,7 +1,8 @@
 @extends('layout.v_templatet')
 @section('title','Laporan')
 @section('content')
-    <table class="table table-bordered">
+    <div class="box-body" style="background-color: white;">
+    <table class="table table-bordered table-hover ">
     <thead>
         <tr>
             <th>No</th>
@@ -33,6 +34,6 @@
         </tr>
         @endforeach
     </tbody>
-
 </table>
+    </div>
 @endsection

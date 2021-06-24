@@ -1,7 +1,8 @@
 @extends('layout.v_templated')
 @section('title','Hi Admin, Selamat datang di TOBANSOS')
 @section('content')
-<table class="table table-bordered">
+<div class="box-body" style="background-color: white;">
+    <table class="table table-bordered table-hover ">
     <thead>
         <tr>
             <th>No</th>
@@ -31,4 +32,5 @@
     </tbody>
 
 </table>
+</div>
 @endsection

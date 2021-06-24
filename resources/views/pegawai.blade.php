@@ -1,7 +1,8 @@
 @extends('layout.v_template')
 @section('title','Pegawai')
 @section('content')
-    <table class="table table-bordered">
+    <div class="box-body" style="background-color: white;">
+    <table class="table table-bordered table-hover ">
     <thead>
         <tr>
             <th>No</th>
@@ -24,4 +25,5 @@
         @endforeach
     </tbody>
     </table>
+    </div>
 @endsection

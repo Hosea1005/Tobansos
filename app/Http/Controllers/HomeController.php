@@ -40,25 +40,64 @@ class HomeController extends Controller
         // ];
         
         if (auth()->user()->level == 1) {
-            return view('v_admin');
+            if($request->has('cari')){
+                $data =[ 
+                    'bantuan' => DB::table('batuan_lokasi')->where('lokasi','like',"%".$request->cari."%")->get(),
+                    'bentuk' => $this->BentukModel->allData(),
+            ];
+            }
+            else{
+                $data = [
+                'bentuk' => $this->BentukModel->allData(),
+                'bantuan' => $this->BantuanModel->allData(),
+            ];
+            }
+            return view('v_admin',$data);
         }
         if (auth()->user()->level == 2) {
-            
-            return view('p_home');
+            if($request->has('cari')){
+                $data =[ 
+                    'bantuan' => DB::table('batuan_lokasi')->where('lokasi','like',"%".$request->cari."%")->get(),
+                    'bentuk' => $this->BentukModel->allData(),
+            ];
+            }
+            else{
+                $data = [
+                'bentuk' => $this->BentukModel->allData(),
+                'bantuan' => $this->BantuanModel->allData(),
+            ];
+            }
+            return view('p_home', $data);
 
         }
         if (auth()->user()->level == 3) {
-            $data = [
+            if($request->has('cari')){
+                $data =[ 
+                    'bantuan' => DB::table('batuan_lokasi')->where('lokasi','like',"%".$request->cari."%")->get(),
+                    'bentuk' => $this->BentukModel->allData(),
+            ];
+            }
+            else{
+                $data = [
                 'bentuk' => $this->BentukModel->allData(),
                 'bantuan' => $this->BantuanModel->allData(),
             ];
+            }
             return view('admin', $data);
         }
         if (auth()->user()->level == 4) {
-            $data = [
+            if($request->has('cari')){
+                $data =[ 
+                    'bantuan' => DB::table('batuan_lokasi')->where('lokasi','like',"%".$request->cari."%")->get(),
+                    'bentuk' => $this->BentukModel->allData(),
+            ];
+            }
+            else{
+                $data = [
                 'bentuk' => $this->BentukModel->allData(),
                 'bantuan' => $this->BantuanModel->allData(),
             ];
+            }
             return view('m_home',$data);
         }
         
@@ -109,6 +148,8 @@ class HomeController extends Controller
         $this->LaporanModel->editData($id_laporan,$data);
         return redirect()->route('home')->with('pesan','Data Berhasil Di Update');
     }
+
+
 
     public function deleteLaporan($id_laporan){
         $this->LaporanModel->deleteData($id_laporan);
@@ -184,7 +225,7 @@ class HomeController extends Controller
 
     public function deleteTransaksi($id_transaksi){
         $this->TransaksiModel->deleteData($id_transaksi);
-        return redirect()->route('home')->with('pesan','Data Berhasil Di Delete');
+        return back()->with('pesan','Data Berhasil Di Delete');
     }
 
     public function detailTransaksi($id_transaksi){
@@ -221,7 +262,7 @@ class HomeController extends Controller
 
     public function pegawaiAdmin(){
         $data =[ 
-                     'users' => $this->PegawaiModel->allData(),
+                     'users' => $this->PegawaiModel->allDataAdmin(),
              ];
         return view('a_pegawai',$data);
     }
@@ -240,6 +281,24 @@ class HomeController extends Controller
                 'users' => $this->PegawaiModel->detailData($id),
             ];
             return view('detailPegawai',$data);
+    }
+
+    public function detailPegawaiPen($id){
+        
+        
+        $data = [
+                'users' => $this->PegawaiModel->detailData($id),
+            ];
+            return view('p_detailPegawai',$data);
+    }
+
+    public function detailPegawaiAdmin($id){
+        
+        
+        $data = [
+                'users' => $this->PegawaiModel->detailData($id),
+            ];
+            return view('a_detailPegawai',$data);
     }
     public function deletePegawai($id){
         $this->PegawaiModel->deleteData($id);
@@ -382,4 +441,95 @@ class HomeController extends Controller
         $this->BentukModel->editData($id_bentuk,$data);
         return redirect()->route('home')->with('pesan','Data Berhasil Di Simpan');
     }
+
+
+    public function halpdf(){
+        return view('a_halpdf');
+    }
+
+    public function hpdf(Request $request){
+        $data = [
+            'name' => $request->input('name'),
+            'nim' => $request->input('nim'),
+            'angkatan' => $request->input('angkatan'),
+            'nidn' => $request->input('nidn'),
+            'ndw' => $request->input('ndw')
+        ];
+        $pdf = \PDF::loadView('a_pdf', $data);
+        return $pdf->download('invoice.pdf');
+    }
+
+    public function profileUser($id){
+        $data = [
+                'userku' => $this->PegawaiModel->detailData($id),
+            ];
+        return view('profileku', $data);
+    }
+    public function updateProfilePeng($id){
+        // Request()->validate([
+        //     'jenis_bb' => 'required|max:255',
+        //     'kapasitas' => 'required',
+        // ],[
+        //     'jenis_bb.required' => 'Jenis Bantuan WAJIB DI ISI!!!',
+        // ],[
+        //     'kapasitas.required' => 'Kapasitas WAJIB DI ISI!!!',
+        // ]);
+
+        $data = [
+            'name' => Request()->name,
+            'jabatan' => Request()->jabatan,
+            'alamat' => Request()->alamat,
+            'nip' => Request()->nip,
+            'email' => Request()->email
+        ];
+
+        $this->PegawaiModel->editData($id,$data);
+        return redirect()->route('home')->with('pesan','Data berhasil di update');
+    }
+
+    public function profileUserPenerima($id){
+        $data = [
+                'userku' => $this->PegawaiModel->detailData($id),
+            ];
+        return view('profilePen', $data);
+    }
+
+    public function updateProfilePen($id){
+        // Request()->validate([
+        //     'jenis_bb' => 'required|max:255',
+        //     'kapasitas' => 'required',
+        // ],[
+        //     'jenis_bb.required' => 'Jenis Bantuan WAJIB DI ISI!!!',
+        // ],[
+        //     'kapasitas.required' => 'Kapasitas WAJIB DI ISI!!!',
+        // ]);
+
+        $data = [
+            'name' => Request()->name,
+            'jabatan' => Request()->jabatan,
+            'alamat' => Request()->alamat,
+            'nip' => Request()->nip,
+            'email' => Request()->email
+        ];
+
+        $this->PegawaiModel->editData($id,$data);
+        return redirect()->route('home')->with('pesan','Data berhasil di update');
+    }
+
+    public function profileUserAdmin($id){
+        $data = [
+                'userku' => $this->PegawaiModel->detailData($id),
+            ];
+        return view('a_profileku', $data);
+    }
+
+    public function profileUserMas($id){
+        $data = [
+                'userku' => $this->PegawaiModel->detailData($id),
+            ];
+        return view('m_profileku', $data);
+    }
+
+
+    
 }

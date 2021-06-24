@@ -1,7 +1,8 @@
 @extends('layout.v_templatet')
 @section('title','Pegawai')
 @section('content')
-    <table class="table table-bordered">
+    <div class="box-body" style="background-color: white;">
+    <table class="table table-bordered table-hover ">
     <thead>
         <tr>
             <th>No</th>
@@ -18,10 +19,11 @@
             <td>{{ $data->name }}</td>
             <td>{{ $data->jabatan }}</td>
             <td>
-                <a href="/pegawai/detailpegawai/{{ $data->id }}" class="btn btn-sm btn-success">Detail</a>
+                <a href="/pegawaiPen/detailpegawai/{{ $data->id }}" class="btn btn-sm btn-success">Detail</a>
             </td>
         </tr>
         @endforeach
     </tbody>
     </table>
+    </div>
 @endsection

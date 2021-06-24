@@ -1,4 +1,4 @@
-@extends('layout.v_template')
+@extends('layout.v_templated')
 @section('title','Detail User')
 @section('content')
 <div class="box box-primary col-md-12" style="padding: 10px; border-radius: 10px;">

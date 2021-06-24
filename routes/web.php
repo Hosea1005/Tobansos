@@ -58,10 +58,21 @@ Route::get('/transaksiPenerima/detailtransaksi/{id_transaksi}', [App\Http\Contro
 Route::get('/pegawai', [App\Http\Controllers\HomeController::class, 'pegawaiPetugas']);
 Route::get('/pegawaiAdmin', [App\Http\Controllers\HomeController::class, 'pegawaiAdmin']);
 Route::get('/pegawai/detailpegawai/{id}', [App\Http\Controllers\HomeController::class, 'detailPegawai']);
+Route::get('/pegawaiPen/detailpegawai/{id}', [App\Http\Controllers\HomeController::class, 'detailPegawaiPen']);
+Route::get('/pegawai/admin/detailpegawai/{id}', [App\Http\Controllers\HomeController::class, 'detailPegawaiAdmin']);
 Route::get('/pegawai/deletepegawai/{id}', [App\Http\Controllers\HomeController::class, 'deletePegawai']);
 Route::get('/pegawaiPenerima', [App\Http\Controllers\HomeController::class, 'pegawaiPenerima']);
 Route::get('/pegawai/add', [App\Http\Controllers\HomeController::class, 'pegawaiAdd']);
 Route::post('/pegawai/insert', [App\Http\Controllers\HomeController::class, 'insertPegawai']);
+
+Route::get('user/{id}', [App\Http\Controllers\HomeController::class, 'profileUser']);
+Route::post('/user/updatePeng/{id}', [App\Http\Controllers\HomeController::class, 'updateProfilePeng']);
+
+Route::get('userPen/{id}', [App\Http\Controllers\HomeController::class, 'profileUserPenerima']);
+
+Route::get('userAdmin/{id}', [App\Http\Controllers\HomeController::class, 'profileUserAdmin']);
+
+Route::get('userMas/{id}', [App\Http\Controllers\HomeController::class, 'profileUserMas']);
 
 Route::get('/bantuan/delete/{id_bantuan}', [App\Http\Controllers\HomeController::class, 'deleteBantuan']);
 Route::get('/bantuan/add', [App\Http\Controllers\HomeController::class, 'bantuanAdd']);
@@ -78,6 +89,9 @@ Route::post('/bentuk/updatebantuan/{id_bb}', [App\Http\Controllers\HomeControlle
 
 Route::get('/masyarakat', [App\Http\Controllers\HomeController::class, 'masyarakatView']);
 
+
+Route::get('/pdf', [App\Http\Controllers\HomeController::class, 'halpdf']);
+Route::post('/hpdf', [App\Http\Controllers\HomeController::class, 'hpdf']);
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');

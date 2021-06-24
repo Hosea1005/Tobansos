@@ -17,6 +17,8 @@
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="{{asset('template/')}}/dist/css/skins/_all-skins.min.css">
+  {{-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"> --}}
+  {{-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"> --}}
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -27,6 +29,29 @@
 
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  <style>
+.pagination {
+  display: inline-block;
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+.pagination a.active {
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 5px;
+}
+
+.pagination a:hover:not(.active) {
+  background-color: #ddd;
+  border-radius: 5px;
+}
+</style>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <!-- Site wrapper -->
@@ -34,7 +59,7 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="{{asset('template/')}}/index2.html" class="logo">
+    <a href="#" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>T</b>BS</span>
       <!-- logo for regular state and mobile devices -->
@@ -68,7 +93,7 @@
                 <div class="row">
                   
                   <div class="col-xs-4 text-center">
-                    <a href="{{ route('profile.show') }}" class="btn btn-default btn-flat">Profile</a>
+                    <a href="/userAdmin/{{ Auth::user()->id }}" class="btn btn-default btn-flat">Profile</a>
                   </div>
                   <div class="col-xs-4 text-center">
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

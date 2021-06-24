@@ -1,8 +1,17 @@
 @extends('layout.v_templatem')
-@section('title','Hi Admin, Selamat datang di TOBANSOS')
+{{-- @section('title','Hi Admin, Selamat datang di TOBANSOS') --}}
 @section('content')
 <h2>Jumlah Penerima Bantuan</h2>
-    <table class="table table-bordered">
+    <div class="box-body" style="background-color: white;">
+        <form action="/" method="GET">
+            <div class="col-md-8">
+            <input class="form-control" name="cari" placeholder="Search lokasi.." type="search" value="{{ old('cari') }}">
+            </div>      
+            <div class="col-md-4">
+                  <input type="submit" value="CARI" class="btn btn-sm btn-success" >
+            </div>
+        </form>
+    <table class="table table-bordered table-hover ">
     <thead>
         <tr>
             <th>No</th>
@@ -21,11 +30,13 @@
         @endforeach
     </tbody>
     </table>
+    </div>
 <br>
 <br>
 <br>
 <h2>Bentuk Bantuan Sosial</h2>
-    <table class="table table-bordered">
+    <div class="box-body" style="background-color: white;">
+    <table class="table table-bordered table-hover ">
     <thead>
         <tr>
             <th>No</th>
@@ -44,4 +55,5 @@
         @endforeach
     </tbody>
     </table>
+    </div>
 @endsection

@@ -1,5 +1,5 @@
-@extends('layout.v_template')
-@section('title','Detail User')
+@extends('layout.v_templatet')
+@section('title','Detail Transaksi')
 @section('content')
 <div class="box box-primary col-md-12" style="padding: 10px; border-radius: 10px;">
   <div class="table-responsive col-md-4">

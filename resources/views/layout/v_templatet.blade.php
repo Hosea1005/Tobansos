@@ -34,7 +34,7 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="{{asset('template/')}}/index2.html" class="logo">
+    <a href="#" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>T</b>BS</span>
       <!-- logo for regular state and mobile devices -->
@@ -67,9 +67,11 @@
               <li class="user-body">
                 <div class="row">
                   
+                  
                   <div class="col-xs-4 text-center">
-                    <a href="{{ route('profile.show') }}" class="btn btn-default btn-flat">Profile</a>
+                    <a href="/userPen/{{ Auth::user()->id }}" class="btn btn-default btn-flat">Profile</a>
                   </div>
+                  
                   <div class="col-xs-4 text-center">
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                       @csrf
@@ -149,7 +151,7 @@
     {{-- <div class="pull-right hidden-xs">
       <b>Version</b> 2.4.18
     </div> --}}
-    <strong>TOABANSOS</a>.</strong> Digunakan untuk bantuan merata
+    <strong>TOBANSOS</a>.</strong> Digunakan untuk bantuan merata
   </footer>
 
   <!-- Control Sidebar -->
